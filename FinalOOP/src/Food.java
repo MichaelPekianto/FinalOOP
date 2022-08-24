@@ -1,13 +1,20 @@
 
 public abstract class Food {
-	private String foodName;
+	private String foodName,foodType;
+	public String getFoodType() {
+		return foodType;
+	}
+	public void setFoodType(String foodType) {
+		this.foodType = foodType;
+	}
 	private int foodQty,foodId,foodPrice;
-	public Food(int foodId,String foodName, int foodPrice, int foodQty) {
+	public Food(int foodId,String foodName, int foodPrice, int foodQty,String foodType) {
 		// TODO Auto-generated constructor stub
 		this.foodName = foodName;
 		this.foodId = foodId;
 		this.foodPrice = foodPrice;
 		this.foodQty = foodQty;
+		this.foodType = foodType;
 	}
 	public String getFoodName() {
 		return foodName;

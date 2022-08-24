@@ -2,8 +2,8 @@
 public class Dessert extends Food {
 	private String flavour;
 	private int sugarLevel;
-	public Dessert(int foodId, String foodName, int foodPrice, int foodQty,String flavour, int sugarLevel) {
-		super(foodId, foodName, foodPrice, foodQty);
+	public Dessert(int foodId, String foodName, int foodPrice, int foodQty,String foodType,String flavour, int sugarLevel) {
+		super(foodId, foodName, foodPrice, foodQty,foodType);
 		// TODO Auto-generated constructor stub
 		this.flavour =flavour;
 		this.sugarLevel = sugarLevel;

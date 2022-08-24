@@ -1,11 +1,20 @@
 
 public class Order {
 	private int orderId,customerId;
-	
-	public Order(int orderId,int customerId) {
+	private boolean isPaid;
+	public Order(int orderId,int customerId,boolean isPaid) {
 		// TODO Auto-generated constructor stub
 	this.customerId =customerId;
 	this.orderId = orderId;
+	this.isPaid = isPaid;
+	}
+
+	public boolean getIsPaid() {
+		return isPaid;
+	}
+
+	public void setIsPaid(boolean isPaid) {
+		this.isPaid = isPaid;
 	}
 
 	public int getOrderId() {
