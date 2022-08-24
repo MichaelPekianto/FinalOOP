@@ -79,14 +79,14 @@ public class Main {
 		String userName;
 		cls();
     	do {
-			System.out.print("Enter User Name[max length 8 character]:");
+			System.out.print("Enter User Name[8-16 characters]:");
 			userName =scan.nextLine();
-		}while(userName.length()>8);
+		}while(userName.length()<8||userName.length()>16);
     	String password;
     	do {
-    		System.out.println("Enter Password[max length 16 characters]:");
+    		System.out.println("Enter Password[8-16 characters]:");
     		password= scan.nextLine();
-    	}while(password.length()>16);
+    	}while(password.length()>16||password.length()<8);
     	System.out.println("Success Register your User Name");
     	if(CustomerList.isEmpty()) {
     		currentUser.setCustomerId(1);
