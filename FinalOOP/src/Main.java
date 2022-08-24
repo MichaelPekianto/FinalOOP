@@ -104,6 +104,7 @@ public class Main {
 	private void viewDessert() {
         // TODO Auto-generated method stub
     	int dessertCount=0;
+    	boolean isEmpty=false;
     	for (Food food : FoodList) {
 		if(food.getFoodType().equals("Dessert") && food.getFoodQty()!=0) {
 			dessertCount+=1;
@@ -137,7 +138,8 @@ public class Main {
 	    		if(tempList.isEmpty()) {
 	    			System.out.println("Sorry,We Are Running Out of Desserts please come back later");
 	    			scan.nextLine();
-	    			order();
+	    			isEmpty=true;
+	    			
 	    		}else {
 	    		
 		    		do {
@@ -159,8 +161,8 @@ public class Main {
 		    		OrderDetailList.add(new OrderDetail(OrderList.size()+1,tempList.get(chooseFood-1).getFoodId(),tempList.get(chooseFood-1).getFoodQty()));
 		    		FoodList.get(tempList.get(chooseFood-1).getFoodId()-1).setFoodQty(FoodList.get(tempList.get(chooseFood-1).getFoodId()-1).getFoodQty()-qty);
 	    		}
-    		}while(isMore.equals("Y"));
-    		System.out.println("Order Success");
+    		}while(isMore.equals("Y") && isEmpty==false);
+    		//System.out.println("Order Success");
     		scan.nextLine();
     		if(OrderList.isEmpty()) {
     			
@@ -174,6 +176,7 @@ public class Main {
 
     private void viewMainCourse() {
     	int mainCount=0;
+    	boolean isEmpty =false;
     	for (Food food : FoodList) {
 		if(food.getFoodType().equals("MainCourse") && food.getFoodQty()!=0) {
 			mainCount+=1;
@@ -204,29 +207,31 @@ public class Main {
 				}
 	    		if(tempList.isEmpty()) {
 	    			System.out.println("Sorry,We Are Running Out of MainCourse please come back later");
+	    			isEmpty=true;
 	        		scan.nextLine();
-	        		order();
-	    		}
-	    		do {
-	    		System.out.print("Choose Food[1-"+mainCount+"] >> ");
-	    		chooseFood = scan.nextInt();
-	    		}while(chooseFood==0||chooseFood>mainCount);
-	    		
-	    		int qty =0;
-	    		do {
-	    			System.out.print("How Much you want to Order[1-"+tempList.get(chooseFood-1).getFoodQty()+"]: ");
-	    		qty = scan.nextInt();
-	    		}while(qty==0||qty>tempList.get(chooseFood-1).getFoodQty());
-	    		scan.nextLine();
-	    		do {
-		    		System.out.print("Do you Want To Order More?[Y/N Case Sensitive]: ");
-		    		isMore= scan.nextLine();
-		    		}while(!isMore.equals("Y")&& !isMore.equals("N"));
+	    		}else {
+	    			do {
+	    	    		System.out.print("Choose Food[1-"+mainCount+"] >> ");
+	    	    		chooseFood = scan.nextInt();
+	    	    		}while(chooseFood==0||chooseFood>mainCount);
+	    	    		
+	    	    		int qty =0;
+	    	    		do {
+	    	    			System.out.print("How Much you want to Order[1-"+tempList.get(chooseFood-1).getFoodQty()+"]: ");
+	    	    		qty = scan.nextInt();
+	    	    		}while(qty==0||qty>tempList.get(chooseFood-1).getFoodQty());
+	    	    		scan.nextLine();
+	    	    		do {
+	    		    		System.out.print("Do you Want To Order More?[Y/N Case Sensitive]: ");
+	    		    		isMore= scan.nextLine();
+	    		    		}while(!isMore.equals("Y")&& !isMore.equals("N"));
 
-	    		OrderDetailList.add(new OrderDetail(OrderList.size()+1,tempList.get(chooseFood-1).getFoodId(),tempList.get(chooseFood-1).getFoodQty()));
-	    		FoodList.get(tempList.get(chooseFood-1).getFoodId()-1).setFoodQty(FoodList.get(tempList.get(chooseFood-1).getFoodId()-1).getFoodQty()-qty);
-    		}while(isMore.equals("Y"));
-    		System.out.println("Order Success");
+	    	    		OrderDetailList.add(new OrderDetail(OrderList.size()+1,tempList.get(chooseFood-1).getFoodId(),tempList.get(chooseFood-1).getFoodQty()));
+	    	    		FoodList.get(tempList.get(chooseFood-1).getFoodId()-1).setFoodQty(FoodList.get(tempList.get(chooseFood-1).getFoodId()-1).getFoodQty()-qty);
+	    		}
+	    		
+    		}while(isMore.equals("Y") && isEmpty==false);
+    		//System.out.println("Order Success");
     		scan.nextLine();
     		if(OrderList.isEmpty()) {
     			
